@@ -29,11 +29,14 @@
 
         </div>
 
+        @if (Route::currentRouteName() === 'login')
         <div class="flex justify-center mt-3">
-            <a class="text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
+            <a class="text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                href="{{ route('register') }}">
                 {{ __('Don\'t have an account? Register') }}
             </a>
         </div>
+        @endif
     </div>
 </body>
 

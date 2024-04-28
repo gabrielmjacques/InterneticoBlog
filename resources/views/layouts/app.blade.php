@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
@@ -30,10 +30,12 @@
         @endif
 
         <!-- Page Content -->
-        <main>
+        <main class="p-5">
             @yield('content')
         </main>
     </div>
+
+    @yield('scripts')
 </body>
 
 </html>

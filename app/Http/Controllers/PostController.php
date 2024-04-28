@@ -12,7 +12,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index', ['slot', 'Post List']);
+        $posts = Post::all();
+
+        return view('posts.index', compact('posts')); // compact('posts') is equal to ['posts' => $posts]
     }
 
     /**
@@ -20,7 +22,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -28,8 +30,44 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'title' => 'required',
+                'content' => 'required',
+                'description' => 'required',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ],
+            [
+                'title.required' => 'O campo título é obrigatório.',
+                'content.required' => 'O campo conteúdo é obrigatório.',
+                'description.required' => 'O campo descrição é obrigatório.',
+                'image.required' => 'O campo imagem é obrigatório.',
+            ]
+        );
+
+        $file = $request->file('image');
+        // make unique name
+        $name = time() . '_' . $file->getClientOriginalName();
+
+        // Saving the image in the storage
+        $imagePath = $file->storeAs('public/image', $name);
+
+        // Remove the 'public/' from the path
+        $imagePath = str_replace('public/', '', $imagePath);
+
+        // Salva os dados do post no banco de dados
+        $post = new Post();
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->description = $request->description;
+        $post->image = $imagePath;
+        $post->user_id = auth()->id();
+
+        $post->save();
+
+        return redirect()->route('posts.index')->with('success', 'Post criado com sucesso!');
     }
+
 
     /**
      * Display the specified resource.
