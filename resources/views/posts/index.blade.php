@@ -20,7 +20,8 @@
 
             @if($isDescriptionLong)
 
-            <a href="{{ route('posts.show', ['post' => $post]) }}" class="w-full h-full flex flex-col transition-all bg-white active:bg-violet-100 ring-0 ring-violet-500 active:ring-2 active:ring-offset-2 rounded-md overflow-hidden shadow cursor-pointer col-span-2 row-span-2 relative hover:brightness-90">
+            <a href="{{ route('posts.show', ['post' => $post]) }}"
+                class="w-full h-full flex flex-col transition-all bg-white active:bg-violet-100 ring-0 ring-violet-500 active:ring-2 active:ring-offset-2 rounded-md overflow-hidden shadow cursor-pointer col-span-2 row-span-2 relative hover:brightness-90">
                 <div class="w-full h-full brightness-50">
                     <img src="{{ $imageUrl }}" alt="{{ $post->title }}" class="w-full h-full object-cover">
                 </div>
@@ -34,31 +35,34 @@
 
             @else
 
-            <div class="w-full h-full flex flex-col transition-all bg-white active:bg-violet-100 ring-0 ring-violet-500 active:ring-2 active:ring-offset-2 rounded-md overflow-hidden shadow cursor-pointer hover:brightness-90">
-                <div class="w-full h-44">
-                    <img src="{{ $imageUrl }}" alt="{{ $post->title }}" class="w-full h-full object-cover">
-                </div>
+            <div
+                class="w-full h-full flex flex-col transition-all bg-white active:bg-violet-100 ring-0 ring-violet-500 active:ring-2 active:ring-offset-2 rounded-md overflow-hidden shadow cursor-pointer hover:brightness-90">
+                <a href="{{ route('posts.show', ['post' => $post]) }}">
+                    <div class="w-full h-44">
+                        <img src="{{ $imageUrl }}" alt="{{ $post->title }}" class="w-full h-full object-cover">
+                    </div>
 
-                <div class="w-full p-2">
-                    <h1 class="text-lg font-extrabold">{{ $post->title }}</h1>
-                    <p class="text-base font-bold opacity-50">{{ $post->description }}</p>
-                </div>
+                    <div class="w-full p-2">
+                        <h1 class="text-lg text-black font-extrabold hover:underline">{{ $post->title }}</h1>
+                        <p class="text-base text-black font-bold opacity-50">{{ $post->description }}</p>
+                </a>
             </div>
-
-            @endif
-            @endforeach
         </div>
-    </div>
 
-    <x-sidebar />
+        @endif
+        @endforeach
+    </div>
+</div>
+
+<x-sidebar />
 </div>
 
 @endsection
 
 @section('scripts')
 <script>
-    document.getElementById('createPostBtn').addEventListener('click', () => {
-        window.location.href = "{{ route('posts.create') }}";
-    });
+document.getElementById('createPostBtn').addEventListener('click', () => {
+    window.location.href = "{{ route('posts.create') }}";
+});
 </script>
 @endsection

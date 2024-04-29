@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -23,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        return view('posts.editor');
     }
 
     /**
@@ -53,10 +54,9 @@ class PostController extends Controller
         // Saving the image in the storage
         $imagePath = $file->storeAs('public/image', $name);
 
-        // Remove the 'public/' from the path
+        // Remove the public/ from the path
         $imagePath = str_replace('public/', '', $imagePath);
 
-        // Salva os dados do post no banco de dados
         $post = new Post();
         $post->title = $request->title;
         $post->content = $request->content;
@@ -85,7 +85,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.editor', compact('post'));
     }
 
     /**
@@ -93,7 +93,39 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $request->validate(
+            [
+                'title' => 'required',
+                'content' => 'required',
+                'description' => 'required',
+            ],
+            [
+                'title.required' => 'O campo título é obrigatório.',
+                'content.required' => 'O campo conteúdo é obrigatório.',
+                'description.required' => 'O campo descrição é obrigatório.',
+            ]
+        );
+
+        $file = $request->file('image');
+
+        if($file){
+        $name = time() . '_' . $file->getClientOriginalName();
+
+        Storage::delete('public/' . $post->image);
+        
+        $imagePath = $file->storeAs('public/image', $name);
+        $imagePath = str_replace('public/', '', $imagePath);
+        $post->image = $imagePath;
+        }
+
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->description = $request->description;
+        $post->user_id = auth()->id();
+
+        $post->save();
+
+        return redirect()->route('posts.index')->with('success', 'Post atualizado com sucesso!');
     }
 
     /**
@@ -101,6 +133,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        Storage::delete('public/' . $post->image);
+        $post->delete();
+
+        return redirect()->route('posts.index')->with('success', 'Post deletado com sucesso!');
     }
 }
