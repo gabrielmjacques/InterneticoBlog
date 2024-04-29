@@ -88,7 +88,7 @@
                 </div>
                 <!-- ------- -->
                 <div class="flex flex-col gap-2">
-                    <x-primary-button type="submit" class="w-full">
+                    <x-primary-button type="submit" class="w-full bg-violet-700">
                         Publicar
                     </x-primary-button>
 

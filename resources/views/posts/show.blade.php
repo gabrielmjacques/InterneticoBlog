@@ -6,12 +6,20 @@
     <div class="w-4/5 border-x border-y-0 border-solid border-black border-opacity-10 px-5 me-5">
 
         <div class="w-2/3 mx-auto">
-            <h1 class="text-4xl text-center font-black">{{ $post->title }}</h1>
+            <h1 class="text-5xl text-center font-black">{{ $post->title }}</h1>
             <p class="text-center font-bold opacity-50 my-3">{{ $post->description }}</p>
             <!-- Extra info -->
-            <div class="flex justify-between">
+            <div>
                 <p class="font-bold">Escrito por {{ $user->username }}</p>
-                <p class="font-bold opacity-50">{{ $post->created_at->locale('pt')->diffForHumans() }}</p>
+
+                <div class="flex items-center gap-2">
+                    <p class="text-sm font-bold opacity-50">Publicado:
+                        {{ $post->created_at->locale('pt')->diffForHumans() }}
+                    </p>
+                    <span>•</span>
+                    <p class="text-sm font-bold opacity-50">Atualizado pela última vez:
+                        {{ $post->updated_at->locale('pt')->diffForHumans() }}</p>
+                </div>
             </div>
 
             <hr class="border-black border-opacity-10 my-5 mb-7">
@@ -24,7 +32,7 @@
 
     <x-sidebar>
         @if(auth()->user()->id === $post->user_id)
-        <x-primary-button id="editPostBtn" class="w-full rounded-2xl">
+        <x-primary-button id="editPostBtn" class="w-full bg-stone-700 rounded-2xl">
             Editar
         </x-primary-button>
 
