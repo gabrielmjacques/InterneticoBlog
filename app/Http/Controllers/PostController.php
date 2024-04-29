@@ -12,9 +12,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $recentlyPosts = Post::orderBy('created_at', 'desc')->limit(5)->get();
+        $posts = Post::orderBy('created_at', 'asc')->paginate(5);
 
-        return view('posts.index', compact('posts')); // compact('posts') is equal to ['posts' => $posts]
+        return view('posts.index', compact('recentlyPosts'));
     }
 
     /**
