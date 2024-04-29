@@ -13,9 +13,13 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-            },
+            }
         },
     },
 
     plugins: [forms],
+
+    // corePlugins: {
+    //     preflight: false,
+    // },
 };
