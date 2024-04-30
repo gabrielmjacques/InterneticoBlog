@@ -125,7 +125,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return redirect()->route('posts.index')->with('success', 'Post atualizado com sucesso!');
+        return redirect()->route('posts.show', compact('post'))->with('success', 'Post atualizado com sucesso!');
     }
 
     /**

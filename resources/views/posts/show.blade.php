@@ -16,7 +16,7 @@
                             </p>
 
                             @if($post->created_at != $post->updated_at)
-                            <span>•</span>
+                            <p>•</p>
                             <p class="text-sm font-bold opacity-50">Atualizado pela última vez:
                                 {{ $post->updated_at->locale('pt')->diffForHumans() }}</p>
                             @endif
@@ -25,7 +25,7 @@
 
                     <hr class="border-black border-opacity-10 my-5 mb-7">
 
-                    <div class="mt-5">
+                    <div id="text-content" class="mt-5">
                         {!! htmlspecialchars_decode($post->content) !!}
                     </div>
                 </div>
@@ -68,9 +68,6 @@
 </x-app-layout>
 
 <script>
-const hr = document.createElement('hr');
-hr.classList.add('border-black', 'border-opacity-10', 'my-5', 'mb-7');
-
 document.getElementById('createPostBtn').addEventListener('click', () => {
     window.location.href = "{{ route('posts.create') }}";
 });
@@ -79,14 +76,29 @@ document.getElementById('editPostBtn').addEventListener('click', () => {
     window.location.href = "{{ url('posts/'.$post->id.'/edit') }}";
 });
 
-const blockquotes = document.querySelectorAll('blockquote');
+const hr = document.createElement('hr');
+hr.classList.add('border-black', 'border-opacity-10', 'my-5', 'mb-7');
+
+// Add classes to elements inside the post content
+const paragraphs = document.querySelectorAll('#text-content p');
+paragraphs.forEach(paragraph => {
+    paragraph.classList.add('mb-5');
+});
+
+const lists = document.querySelectorAll('#text-content ul, #text-content ol');
+lists.forEach(list => {
+    list.classList.add('list-disc', 'ml-5', 'mb-5');
+});
+
+const blockquotes = document.querySelectorAll('#text-content blockquote');
 blockquotes.forEach(blockquote => {
     blockquote.insertAdjacentElement('beforebegin', hr.cloneNode(true))
     blockquote.insertAdjacentElement('afterend', hr.cloneNode(true))
 });
 
-const images = document.querySelectorAll('img');
+const images = document.querySelectorAll('#text-content img');
 images.forEach(image => {
     image.classList.add('rounded-xl', 'my-5', 'mx-auto');
 });
+// --------------------------------------------
 </script>
