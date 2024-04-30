@@ -13,10 +13,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $recentlyPosts = Post::orderBy('created_at', 'desc')->limit(5)->get();
-        $posts = Post::orderBy('created_at', 'asc')->paginate(5);
+        $recentlyPosts = Post::orderBy('created_at', 'desc')->limit(3)->get();
+        $posts = Post::orderBy('created_at', 'asc')->paginate(6);
 
-        return view('posts.index', compact('recentlyPosts'));
+        return view('posts.index', compact('posts', 'recentlyPosts'));
     }
 
     /**
