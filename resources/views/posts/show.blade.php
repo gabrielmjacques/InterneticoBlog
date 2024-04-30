@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="slot">
         <div class="flex">
-            <div class="w-4/5 border-x border-y-0 border-solid border-black border-opacity-10 px-5 me-5">
+            <div class="w-4/5 border-x-4 border-y-0 border-solid border-black border-opacity-10 px-5 me-5">
 
                 <div class="w-2/3 mx-auto">
                     <h1 class="text-5xl font-black">{{ $post->title }}</h1>
@@ -23,7 +23,7 @@
                         </div>
                     </div>
 
-                    <hr class="border-black border-opacity-10 my-5 mb-7">
+                    <hr class="border-2 border-black border-opacity-10 my-5 mb-7">
 
                     <div id="text-content" class="mt-5">
                         {!! htmlspecialchars_decode($post->content) !!}

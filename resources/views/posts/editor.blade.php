@@ -42,9 +42,10 @@
                         <div class="flex flex-col gap-2">
 
                             <!-- Banner -->
-                            <div class="imageInputContainer rounded-md shadow-md border-black border-opacity-15">
+                            <div
+                                class="rounded-md shadow-md border-black border-opacity-15 group hover:opacity-80 active:scale-95 transition-all">
                                 <label for="image"
-                                    class="flex flex-col items-center justify-center w-full bg-white text-violet-500 rounded-lg shadow-md cursor-pointer hover:bg-violet-50 active:bg-violet-100 transition-all">
+                                    class="flex flex-col items-center justify-center w-full bg-white text-violet-500 rounded-lg shadow-md cursor-pointer">
 
                                     <!-- Preview -->
                                     <div class="previewContainer bg-stone-200 w-full h-40 relative overflow-hidden">

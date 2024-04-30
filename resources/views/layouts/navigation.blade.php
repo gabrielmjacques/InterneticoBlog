@@ -12,7 +12,8 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
+                    <x-nav-link class="active:brightness-50 duration-300" :href="route('posts.index')"
+                        :active="request()->routeIs('posts.index')">
                         {{ __('Home') }}
                     </x-nav-link>
                 </div>
@@ -23,7 +24,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none active:scale-95 transition ease-in-out duration-150">
                             <div>{{ Auth::user()->username }}</div>
 
                             <div class="ms-1">
