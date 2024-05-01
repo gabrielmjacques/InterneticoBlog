@@ -37,35 +37,42 @@ git clone https://github.com/gabrielmjacques/InterneticoBlog.git
 ---
 
 2. Configure o Herd:
-  - Vá na aba **General**
-  - Clique em **Add path**
-  - Adicione o caminho da pasta superior ao diretório do projeto.
-  - O link do projeto deve estar disponível na aba **Sites**.
+- Vá na aba **General**
+- Clique em **Add path**
+- Adicione o caminho da pasta superior ao diretório do projeto.
+- O link do projeto deve estar disponível na aba **Sites**.
 
 ---
 
 3. Configure as variáveis de ambiente:
-  - Crie um arquivo `.env` na raiz do projeto.
-  - Copie o conteúdo do arquivo `.env.example` e cole no arquivo `.env`.
-  - Altere as variáveis de ambiente conforme necessário.
+- Crie um arquivo `.env` na raiz do projeto.
+- Copie o conteúdo do arquivo `.env.example` e cole no arquivo `.env`.
+- Altere as variáveis de ambiente conforme necessário.
 
 ---
 
 4. Instale as dependências:
-  - Abra um terminal na pasta do projeto.
-  - Execute o comando:
+- Abra um terminal na pasta do projeto.
+- Execute o comando:
 ```bash
 composer install
 ```
-  - Agora instale as dependências do NPM:
+- Agora instale as dependências do NPM:
 ```bash
 npm install
 ```
 
 ---
 
-5. Gere a chave de aplicação:
-  - Execute o comando:
+5. Execute as migrations
+- Execute o comando:
+```bash
+php artisan migrate
+```
+---
+
+6. Gere a chave de aplicação:
+- Execute o comando:
 ```bash
 php artisan key:generate
 ```
@@ -75,7 +82,7 @@ php artisan key:generate
 ## Execução
 
 1. Inicie o servidor:
-  - Execute o comando:
+- Execute o comando:
 ```bash
 npm run dev
 ```
