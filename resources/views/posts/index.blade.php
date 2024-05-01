@@ -7,12 +7,13 @@
 
                 <div
                     class="w-full text-center text-zinc-500 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <p class="text-3xl font-bold">{{ __('"Wow! No posts were found..."') }}</p>
-                    <p class="text-2xl">{{ __('"How about creating a new post?"') }}</p>
+                    <p class="text-3xl font-bold">{{ __('Wow! No posts were found...') }}</p>
+                    <p class="text-2xl">{{ __('How about creating a new post?') }}</p>
                 </div>
 
                 @endif
 
+                @if($recentlyPosts->isNotEmpty())
                 <!-- Latest Posts -->
                 <div class="flex items-center gap-2">
                     <h1 class="text-2xl font-mono font-extrabold mb-2">{{ __('Latest Posts') }}</h1>
@@ -67,7 +68,9 @@
                     @endforeach
 
                 </div>
+                @endif
 
+                @if($posts->isNotEmpty())
                 <!--  More Posts -->
                 <div class="flex items-center gap-2 mt-10">
                     <h1 class="text-2xl font-mono font-extrabold mb-2">{{ __('Read More') }}</h1>
@@ -108,6 +111,7 @@
                 <div class="flex flex-col my-5">
                     {{ $posts->links() }}
                 </div>
+                @endif
             </div>
 
             <x-sidebar />
