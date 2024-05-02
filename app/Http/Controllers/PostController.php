@@ -85,6 +85,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        if(auth()->id() !== $post->user_id){
+            return redirect()->route('posts.show', compact('post'));
+        }
+        
         return view('posts.editor', compact('post'));
     }
 

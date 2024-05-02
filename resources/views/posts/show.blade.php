@@ -24,12 +24,12 @@
                             </div>
                         </div>
 
-                        <div>
-                            <a href="{{ route('posts.edit', ['post' => $post]) }}">
-                                <img src="{{ asset('icons/edit.svg') }}" alt=""
-                                    class="w-8 md:w-10 opacity-50 rounded-lg p-1 hover:opacity-100 hover:bg-gray-300 active:brightness-95 transition-all">
-                            </a>
-                        </div>
+                        @if(auth() && auth()->id() == $post->user_id)
+                        <a href="{{ route('posts.edit', ['post' => $post]) }}">
+                            <img src="{{ asset('icons/edit.svg') }}" alt=""
+                                class="w-8 md:w-10 opacity-50 rounded-lg p-1 hover:opacity-100 hover:bg-gray-300 active:brightness-95 transition-all">
+                        </a>
+                        @endif
                     </div>
 
                     <?php

@@ -1,4 +1,9 @@
-<div class="bg-white p-2 md:p-5 rounded-2xl shadow">
+<div class="bg-white min-h-80 p-2 md:p-5 rounded-2xl shadow relative">
+
+    @if($posts->isEmpty())
+    <h1 class="text-center font-bold opacity-50 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        {{ __('No posts found...') }}</h1>
+    @endif
 
     <ul class="flex flex-col gap-5">
         @foreach($posts as $post)
