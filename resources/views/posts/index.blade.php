@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="slot">
-        <div class="flex">
+        <div class="flex flex-col-reverse md:flex-row">
             <div
-                class="w-4/5 min-h-96 border-x-4 border-y-0 border-solid border-black border-opacity-10 px-5 me-5 relative">
+                class="w-full md:w-full min-h-96 md:border-x-4 border-y-0 border-solid border-black border-opacity-10 md:px-5 relative">
                 @if($recentlyPosts->isEmpty())
 
                 <div
@@ -16,22 +16,22 @@
                 @if($recentlyPosts->isNotEmpty())
                 <!-- Latest Posts -->
                 <div class="flex items-center gap-2">
-                    <h1 class="text-2xl font-mono font-extrabold mb-2">{{ __('Latest Posts') }}</h1>
-                    <hr class="flex-1 border-2 border-black border-opacity-15">
+                    <h1 class="text-xl md:text-2xl font-mono font-extrabold mb-2">{{ __('Latest Posts') }}</h1>
+                    <hr class="flex-1 border border-violet-300">
                 </div>
 
-                <div class="grid grid-cols-3 gap-1">
+                <div class="h-1/3 grid grid-cols-2 md:grid-cols-3 gap-2">
                     @foreach($recentlyPosts as $index => $post)
 
                     <?php
-                    $maxLen = 80;
+                    $maxLen = 70;
                     $imageUrl = asset('storage/' . $post->image);
 
                     if($index == 0){
-                        $post->description = substr($post->description, 0, $maxLen + 300) . '... Ler mais';
+                        $post->description = substr($post->description, 0, $maxLen + 300) . "... " . __('Read More');
                         
                     }else if(strlen($post->description) > $maxLen){
-                        $post->description = substr($post->description, 0, $maxLen) . '... Ler mais';
+                        $post->description = substr($post->description, 0, $maxLen) . "... " . __('Read More');
                     }
                     ?>
 
@@ -43,9 +43,11 @@
                             <img src="{{ $imageUrl }}" alt="{{ $post->title }}" class="w-full h-full object-cover">
                         </div>
 
-                        <div class="w-5/6 h-full justify-between text-white px-5 py-10 absolute">
-                            <h1 class="text-4xl font-extrabold">{{ $post->title }}</h1>
-                            <p class="text-xl font-extrabold opacity-75 break-words">{{ $post->description }}</p>
+                        <div class="w-5/6 h-full justify-between text-white p-2 md:p-5 absolute">
+                            <h1 class="text-xl md:text-4xl font-extrabold">{{ $post->title }}</h1>
+                            <p class="hidden md:block text-xl font-extrabold opacity-75 break-words">
+                                {{ $post->description }}
+                            </p>
                         </div>
                     </a>
 
@@ -53,14 +55,16 @@
                     @else
 
                     <a href="{{ route('posts.show', ['post' => $post]) }}"
-                        class="h-full flex flex-col transition-all duration-300 bg-white active:bg-violet-100 ring-0 ring-violet-500 active:ring-2 active:ring-offset-2 rounded overflow-hidden shadow cursor-pointer relative hover:brightness-90 hover:shadow-xl">
+                        class="h-52 md:h-full flex flex-col transition-all duration-300 bg-white active:bg-violet-100 ring-0 ring-violet-500 active:ring-2 active:ring-offset-2 rounded overflow-hidden shadow cursor-pointer relative hover:brightness-90 hover:shadow-xl">
                         <div class="w-full h-full brightness-50">
                             <img src="{{ $imageUrl }}" alt="{{ $post->title }}" class="w-full h-full object-cover">
                         </div>
 
-                        <div class="w-5/6 h-full justify-between text-white px-2 py-5 absolute">
-                            <h1 class="text-lg font-extrabold">{{ $post->title }}</h1>
-                            <p class="text-base font-extrabold opacity-75 break-words">{{ $post->description }}</p>
+                        <div class="w-full h-full justify-between text-white p-2 md:p-4 absolute">
+                            <h1 class="text-base md:text-xl font-extrabold">{{ $post->title }}</h1>
+                            <p class="hidden md:block text-base font-extrabold opacity-75 break-words">
+                                {{ $post->description }}
+                            </p>
                         </div>
                     </a>
 
@@ -68,16 +72,14 @@
                     @endforeach
 
                 </div>
-                @endif
 
-                @if($posts->isNotEmpty())
                 <!--  More Posts -->
                 <div class="flex items-center gap-2 mt-10">
-                    <h1 class="text-2xl font-mono font-extrabold mb-2">{{ __('Read More') }}</h1>
-                    <hr class="flex-1 border-2 border-black border-opacity-15">
+                    <h1 class="text-xl md:text-2xl font-mono font-extrabold mb-2">{{ __('Read More') }}</h1>
+                    <hr class="flex-1 border border-violet-300">
                 </div>
 
-                <div class="grid grid-cols-3 gap-5">
+                <div class="grid md:grid-cols-4 gap-5">
 
                     @foreach($posts as $post)
 
@@ -113,8 +115,6 @@
                 </div>
                 @endif
             </div>
-
-            <x-sidebar />
         </div>
     </x-slot>
 </x-app-layout>

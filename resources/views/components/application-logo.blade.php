@@ -1,3 +1,1 @@
-@props (['width' => "50px"])
-
-<img src="{{ asset('logo.png') }}" alt="" width="{{ $width }}" class="">
+<img src="{{ asset('logo.png') }}" alt="" {{ $attributes->merge(['class' => 'w-10']) }}>

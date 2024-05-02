@@ -1,21 +1,21 @@
 <x-app-layout>
     <x-slot name="slot">
-        <p class="text-3xl font-light text-center">{{ __('Awaken your') }} <span
+        <p class="text-2xl md:text-4xl font-light text-center">{{ __('Awaken your') }} <span
                 class="text-violet-700 font-bold">{{ __('creativity') }}</span>
             {{ __('here') }}!
         </p>
 
         <hr class="my-4 w-4/6 mx-auto border-black border-opacity-15">
 
+        <!-- Check if the post is being edited -->
         @if(isset($post))
         <form method="post" action="{{ route('posts.update', ['post' => $post]) }}" enctype="multipart/form-data"
             class="flex flex-col">
             @method('PUT')
-            @else
 
+            @else
             <form method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data" class="flex flex-col">
                 @endif
-
                 @csrf
 
                 <input type="text" id="title" name="title" placeholder="{{ __('Create a title for your post...') }}"
@@ -27,8 +27,8 @@
                 @enderror
                 <!-- ------ -->
 
-                <div class="flex mt-4">
-                    <div class="w-3/4">
+                <div class="flex flex-col md:flex-row mt-5">
+                    <div class="w-full md:w-3/4 shadow-md mb-4 md:me-2">
                         <x-forms.tinymce-editor id="content" name="content" required>
                             {{ isset($post) ? $post->content : '' }}
                         </x-forms.tinymce-editor>
@@ -38,7 +38,7 @@
                         @enderror
                     </div>
 
-                    <div class="w-1/4 px-5 flex flex-col justify-between mx-auto gap-5">
+                    <div class="w-full md:w-1/4 flex flex-col justify-between mx-auto gap-5">
                         <div class="flex flex-col gap-2">
 
                             <!-- Banner -->
@@ -87,14 +87,15 @@
                             <!-- ------------ -->
 
                         </div>
-                        <div class="flex flex-col gap-2">
-                            <x-primary-button type="submit" class="w-full">
+
+                        <div class="flex-col gap-2">
+                            <x-primary-button type="submit" class="w-full mb-2">
                                 {{ __('Publish') }}
                             </x-primary-button>
 
                             <x-secondary-button onclick="javascript: window.history.back()" id="cancelBtn" type="button"
-                                class=" text-lg text-white p-2 rounded focus:ring-2 focus:ring-red-500 focus:ring-offset-2
-        transition ease-in-out duration-150">{{ __('Cancel') }}</x-secondary-button>
+                                class="w-full text-lg text-white p-2 rounded focus:ring-2 focus:ring-red-500 focus:ring-offset-2
+                                transition ease-in-out duration-150">{{ __('Cancel') }}</x-secondary-button>
                         </div>
                     </div>
                 </div>

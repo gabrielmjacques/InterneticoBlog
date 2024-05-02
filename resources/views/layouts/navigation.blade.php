@@ -21,6 +21,13 @@
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <a href="{{ route('posts.create') }}">
+                    <button
+                        class="text-sm hover:bg-violet-700 hover:text-white border-2 border-violet-700 rounded-3xl hover:rounded-lg px-7 py-2 active:brightness-75 transition-all duration-300">
+                        {{ __('Create Post') }}
+                    </button>
+                </a>
+
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
@@ -77,6 +84,12 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                 {{ __('Home') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('posts.create')" :active="request()->routeIs('posts.create')">
+                {{ __('Create Post') }}
             </x-responsive-nav-link>
         </div>
 

@@ -4,7 +4,7 @@
 $TINYMCE_API_KEY = config('services.tinymce.api_key');
 @endphp
 
-<textarea id="basic-example" name="{{ $name }}">
+<textarea id="basic-example" name="{{ $name }}" placeholder="{{ __('Write your new post here.') }}">
     {{ $slot }}
 </textarea>
 <script src="https://cdn.tiny.cloud/1/{{ $TINYMCE_API_KEY }}/tinymce/7/tinymce.min.js" referrerpolicy="origin">
