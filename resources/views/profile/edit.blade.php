@@ -3,10 +3,10 @@
         <div class="flex flex-col md:flex-row">
             <aside class="hidden md:flex md:flex-col w-1/4 bg-white py-5">
                 <a href="{{ route('profile.edit', ['tab' => 'info']) }}"
-                    class="p-4 text-start font-bold border-b bg-white hover:brightness-95 active:brightness-90 transition-all">{{ __('Profile Information') }}</a>
+                    class="p-4 text-start font-bold border-b bg-white hover:brightness-95 active:brightness-90 transition-all @if($tab == 'info' || !$tab) brightness-95 border-violet-700 @endif">{{ __('Profile Information') }}</a>
 
                 <a href="{{ route('profile.edit', ['tab' => 'posts']) }}"
-                    class="p-4 text-start font-bold border-b bg-white hover:brightness-95 active:brightness-90 transition-all">{{ __('Posts') }}</a>
+                    class="p-4 text-start font-bold border-b bg-white hover:brightness-95 active:brightness-90 transition-all @if($tab == 'posts') brightness-95 border-violet-700 @endif">{{ __('Posts') }}</a>
             </aside>
 
             <menu class="md:hidden px-5 mb-2">
