@@ -2,13 +2,24 @@
 
 Este projeto é uma plataforma de blogs construída com o framework Laravel, permitindo que os usuários publiquem, compartilhem e gerenciem conteúdos de forma fácil e eficiente. Ele oferece recursos como autenticação de usuários, criação e edição de posts e uma interface intuitiva para navegar pelos diferentes posts e conteúdos disponíveis.
 
-<div style=display: flex>
-  <img width=100% src="https://github.com/gabrielmjacques/y-social-network/assets/107326349/77802904-a9c9-49a7-bb0b-045460d67443"/>
-  <hr>
-  
-  <img width=49.9% src="https://github.com/gabrielmjacques/y-social-network/assets/107326349/4fbee469-2f13-46b7-bd6c-4fe74bbf52cd"/>
-  <img width=49% src="https://github.com/gabrielmjacques/y-social-network/assets/107326349/140d9a44-0f99-4b92-abbb-13a182e22783"/>
-</div>
+<p align="center">
+    <img width=80% src="https://github.com/gabrielmjacques/InterneticoBlog/assets/107326349/47d0c926-4dc5-490c-90be-8b70dec913c1"/>
+</p>
+
+<hr>
+
+<img width=49.9% src="https://github.com/gabrielmjacques/InterneticoBlog/assets/107326349/fc9967ac-c466-46bb-91a5-7423723a002b"/>
+
+<img width=49% src="https://github.com/gabrielmjacques/InterneticoBlog/assets/107326349/7a8a9670-0398-4ad0-ba34-4080f249ea42"/>
+
+<hr>
+
+<img width=32% src="https://github.com/gabrielmjacques/InterneticoBlog/assets/107326349/ddbb1391-9719-49f8-ac87-092159b11947"/>
+
+<img width=32% src="https://github.com/gabrielmjacques/InterneticoBlog/assets/107326349/2f0c54bb-ecaf-4dfc-8265-4a1f2491cf42"/>
+
+<img width=32% src="https://github.com/gabrielmjacques/InterneticoBlog/assets/107326349/86094d4d-34ac-427e-8067-a3e63d5a516e"/>
+
 
 ## Tecnologias Usadas
 
