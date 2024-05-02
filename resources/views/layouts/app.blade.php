@@ -1,3 +1,5 @@
+@props(['padding' => 'true'])
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -30,7 +32,7 @@
         @endif
 
         <!-- Page Content -->
-        <main class="p-2 md:p-5 bg-gray-200">
+        <main class="{{ $padding == 'true' ? 'p-2 md:p-5' : ''}} bg-gray-50">
             {{ $slot }}
         </main>
     </div>

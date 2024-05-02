@@ -1,29 +1,23 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
-
+<x-app-layout padding='false'>
     <x-slot name="slot">
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <div class="max-w-xl">
-                        @include('profile.partials.update-profile-information-form')
-                    </div>
-                </div>
+        <div class="flex">
+            <aside class="w-1/4 bg-white flex flex-col py-5">
+                <a href="{{ route('profile.edit', ['tab' => 'info']) }}"
+                    class="p-4 text-start font-bold border-b bg-white hover:brightness-95 active:brightness-90 transition-all">{{ __('Profile Information') }}</a>
 
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <div class="max-w-xl">
-                        @include('profile.partials.update-password-form')
-                    </div>
-                </div>
+                <a href="{{ route('profile.edit', ['tab' => 'posts']) }}"
+                    class="p-4 text-start font-bold border-b bg-white hover:brightness-95 active:brightness-90 transition-all">{{ __('Posts') }}</a>
+            </aside>
 
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <div class="max-w-xl">
-                        @include('profile.partials.delete-user-form')
-                    </div>
+            <div class="w-3/4 bg-white">
+                <div class="h-[calc(100dvh-85px)] mb-5 bg-gray-50 rounded-s-3xl border overflow-y-scroll p-5">
+                    @if(!isset($tab) || $tab === 'info')
+                    @include('profile.partials.info')
+
+                    @elseif($tab === 'posts')
+                    @include('profile.partials.posts')
+
+                    @endif
                 </div>
             </div>
         </div>

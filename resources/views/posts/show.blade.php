@@ -9,15 +9,16 @@
                     <!-- Extra info -->
                     <div class="flex justify-between items-center">
                         <div>
-                            <p class="text-base font-bold">Escrito por {{ $user->username }}</p>
+                            <p class="text-base font-bold">{{ __('Writed by') }} {{ $user->username }}</p>
                             <div class="flex flex-col md:flex-row md:items-center md:gap-2">
-                                <p class="text-xs md:text-sm font-bold opacity-50">Criado:
+                                <p class="text-xs md:text-sm font-bold opacity-50">{{ __('Created') }}:
                                     {{ $post->created_at->locale('pt')->diffForHumans() }}
                                 </p>
+
                                 @if($post->created_at != $post->updated_at)
                                 <span class="hidden md:inline">&bull;</span>
 
-                                <p class="text-xs md:text-sm font-bold opacity-50">Atualizado:
+                                <p class="text-xs md:text-sm font-bold opacity-50">{{ __('Updated') }}:
                                     {{ $post->updated_at->locale('pt')->diffForHumans() }}</p>
                                 @endif
                             </div>

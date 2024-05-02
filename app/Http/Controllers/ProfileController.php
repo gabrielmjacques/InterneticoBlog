@@ -16,8 +16,21 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {   
+        $tab = $request->query('tab', 'info');
+
+        if($tab === 'posts') {
+            $posts = $request->user()->posts()->latest()->paginate(4);
+            
+            return view('profile.edit', [
+                'user' => $request->user(),
+                'tab' => $tab,
+                'posts' => $posts
+            ]);
+        }
+        
         return view('profile.edit', [
             'user' => $request->user(),
+            'tab' => $request->query('tab', $tab)
         ]);
     }
 

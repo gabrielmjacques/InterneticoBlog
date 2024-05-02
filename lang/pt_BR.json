@@ -161,5 +161,10 @@
   "Add a banner": "Adicionar um banner",
   "Create a title for your post...": "Crie um título para sua publicação...",
   "Write a short description...": "Escreva uma breve descrição...",
-  "Publish": "Publicar"
+  "Publish": "Publicar",
+  "Writed by": "Escrito por",
+  "Created": "Criado",
+  "Updated": "Atualizado",
+  "Posts": "Publicações",
+  "Are you sure you want to delete this post?": "Tem certeza de que deseja excluir esta postagem?"
 }
